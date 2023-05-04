@@ -1,0 +1,133 @@
+//colors
+$purple: hsl(259, 100%, 65%);
+$lightRed: hsl(0, 100%, 67%);
+$White: hsl(0, 0%, 100%);
+$Offwhite: hsl(0, 0%, 94%);
+$Lightgrey: hsl(0, 0%, 86%);
+$Smokeygrey: hsl(0, 1%, 44%);
+$Offblack: hsl(0, 0%, 8%);
+//general
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+font-family: 'Poppins', sans-serif;
+background-color: $Offwhite;
+width: 100vw;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+//Top section
+.container{
+    //border: 2px black solid;
+    flex-direction: column;
+    height: 35rem;
+    min-width: 10rem;
+    max-width: 27rem;
+    background-color: $White;
+    border-radius: 1rem;
+    border-bottom-right-radius: 10rem;
+}
+
+.holder{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    min-width: .8rem;
+    max-width: 28%;
+  
+    border-radius: 1rem;
+}
+
+input{
+    height: 2.5rem;
+}
+
+.input-label{
+    letter-spacing: .2rem;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    column-gap: 1rem;
+}
+
+label{
+    color: $Smokeygrey;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    margin-top: 2px;
+}
+label:invalid{
+    color: $lightRed;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: 2px solid black;
+}
+
+.input-error{
+    display: none;
+}
+
+.input-error .shown{
+    margin-top: .4rem;
+    color: $lightRed;
+    font-size: 10px;
+}
+
+//Button section
+.line{
+    margin: auto;
+    border-bottom: 1px solid $Offwhite;
+    width: 80%;
+    margin-top: 1rem;
+}
+
+.submit-btn{
+    display: flex;
+    border-radius: 3rem;
+    border: none;
+    background: $purple;
+    padding: 1rem;
+    margin-top: -2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit-btn:active{
+    scale: 1.1;
+    background: $Offblack;
+}
+
+.outputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 1rem;
+}
+
+.outputs h1{
+    font-size: 3.7rem;
+    font-style: italic;
+    
+}
+
+#yearData, #monthData, #dayData{
+    color: $purple;
+    margin-left: 2rem;
+}
+
