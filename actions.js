@@ -1,33 +1,66 @@
-// output elements
-const yearData = document.querySelector('#yearData');
-const monthData = document.querySelector('#monthData');
-const dayData = document.querySelector('#dayData');
-const submit_btn = document.querySelector('.submit-btn')
+const dayInput = document.getElementById("day");
+const monthInput = document.getElementById("month");
+const yearInput = document.getElementById("year");
+const yearData = document.getElementById("yearData");
+const monthData = document.getElementById("monthData");
+const dayData = document.getElementById("dayData");
+const submitBtn = document.querySelector(".submit-btn");
 
-//input elements
+submitBtn.addEventListener("click", function (event) {
+  event.preventDefault();
 
-const yearIn = document.querySelector('#year');
-const monthIn = document.querySelector('#month');
-const dayIn = document.querySelector('#day');
+  // get the input values
+  const day = dayInput.value;
+  const month = monthInput.value;
+  const year = yearInput.value;
 
-const yearError = document.querySelector('#dayError')
-const monthError = document.querySelector('#dayError')
-const dayError = document.querySelector('#dayError')
+  // validate the day, month, and year inputs
+  const validDay = day > 0 && day <= 31;
+  const validMonth = month > 0 && month <= 12;
+  const validYear = year > 0 && year <= new Date().getFullYear();
 
-const btn = document.querySelector('.submit-btn').onclick = function(){
-   
-}
+  if (!validDay) {
+    // display error message for day input
+    document.getElementById("dayError").style.display = "block";
+    dayInput.classList.add("invalid");
+  } else {
+    document.getElementById("dayError").style.display = "none";
+    dayInput.classList.remove("invalid");
+  }
 
-dayIn.addEventListener("input", (e) => {
-    if (+dayIn.value > 31) {
-        dayIn.textContent = "Must be a valid date";
-        isValid = false;
-    } else {
-        isValid = true;
+  if (!validMonth) {
+    // display error message for month input
+    document.getElementById("monthError").style.display = "block";
+    monthInput.classList.add("invalid");
+  } else {
+    document.getElementById("monthError").style.display = "none";
+    monthInput.classList.remove("invalid");
+  }
+
+  if (!validYear) {
+    // display error message for year input
+    document.getElementById("yearError").style.display = "block";
+    yearInput.classList.add("invalid");
+  } else {
+    document.getElementById("yearError").style.display = "none";
+    yearInput.classList.remove("invalid");
+  }
+
+  if (validDay && validMonth && validYear) {
+    // calculate the age
+    const birthDate = new Date(`${month}/${day}/${year}`);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
     }
-})
-//
-dayData.addEventListener("input", (e) => {
-    // document.querySelector("#dayData" = )
-})
+    const months = (today.getMonth() + 12 - birthDate.getMonth()) % 12;
+    const days = today.getDate() - birthDate.getDate();
 
+    // display the age in the output section
+    yearData.textContent = age;
+    monthData.textContent = months;
+    dayData.textContent = days;
+  }
+});

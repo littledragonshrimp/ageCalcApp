@@ -67,7 +67,6 @@ label:invalid {
   display: flex;
   flex-direction: column;
   padding: 0;
-  border: 2px solid black;
 }
 
 .input-error {
@@ -118,4 +117,38 @@ label:invalid {
 #yearData, #monthData, #dayData {
   color: hsl(259, 100%, 65%);
   margin-left: 2rem;
+}
+
+input.invalid {
+  border-color: red;
+}
+
+.input-error {
+  display: none;
+  color: red;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 900px) {
+  *, body {
+    padding: 0;
+    margin: 0;
+  }
+  .container {
+    min-width: 45rem;
+  }
+  .submit-btn {
+    display: flex;
+    border-radius: 3rem;
+    border: none;
+    background: hsl(259, 100%, 65%);
+    padding: 1rem;
+    margin-top: -2rem;
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+  .outputs {
+    margin-left: 4rem;
+  }
 }/*# sourceMappingURL=styles.css.map */
